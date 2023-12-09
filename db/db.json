@@ -1,14 +1,10 @@
 [
   {
     "title": "test 1",
-    "text": "this is a test"
+    "text": "Does it work"
   },
   {
-    "title": "test 2",
-    "text": "same problem"
-  },
-  {
-    "title": "Test 3",
-    "text": "seems to not display the old tests"
+    "title": "Test 2",
+    "text": "Still not working?"
   }
 ]
