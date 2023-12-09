@@ -21,10 +21,26 @@ app.get('/notes', (req, res) => {
 });
 
 app.get('/api/notes', (req, res) => {
-    res.json(oldNotes.slice(1));
+    res.json(oldNotes);
 });
 
 //post requests 
+app.post('/api/notes', (req, res) => {
+    const newNote = req.body;
+    oldNotes.push(newNote);
+
+    const allNotes = JSON.stringify(oldNotes, null, 2)
+
+    fs.writeFile('./db/db.json', allNotes, (err) =>
+        err
+            ? console.error(err)
+            : console.log(
+                `New note ${newNote.title} has been written to JSON file`
+                )
+    );
+
+    res.json(allNotes);
+});
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
