@@ -1,4 +1,5 @@
 const express = require('express');
+const generateUniqueId = require("generate-unique-id");
 const path = require('path');
 const fs = require('fs');
 // notes database = oldNotes
@@ -27,6 +28,7 @@ app.get('/api/notes', (req, res) => {
 //post requests 
 app.post('/api/notes', (req, res) => {
     const newNote = req.body;
+    newNote.id = generateUniqueId({length: 3});
     oldNotes.push(newNote);
 
     const allNotes = JSON.stringify(oldNotes, null, 2)
